@@ -15,7 +15,6 @@ export default class TodoApp extends LitElement {
 	constructor() {
 		super();
 		this.todos = [];
-		this.addTodo = this.addTodo.bind(this);
 	}
 
 	addTodo(e) {

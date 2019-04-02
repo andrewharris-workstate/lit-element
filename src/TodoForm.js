@@ -11,8 +11,21 @@ export default class TodoForm extends LitElement {
 				border: 1px solid #ccc;
 			}
 			fieldset > * {
+				box-sizing: border-box;
 				display: block;
 				margin: 1rem 0;
+				padding: 10px;
+				font: normal 16px Arial, sans-serif;
+			}
+			fieldset > input, fieldset > textarea {
+				width: 50%;
+				border: 1px solid #ccc;
+				border-radius: 3px;
+			}
+			fieldset > button {
+				background: #eee;
+				border: 1px solid #ccc;
+				padding: 5px 10px;
 			}
 		`;
 	}
@@ -28,8 +41,6 @@ export default class TodoForm extends LitElement {
 		super();
 		this.title = '';
 		this.desc = '';
-		this.updateProperty = this.updateProperty.bind(this);
-		this.saveNewTodo = this.saveNewTodo.bind(this);
 	}
 
 	updateProperty(prop, val) {

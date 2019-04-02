@@ -30,7 +30,6 @@ export default class TodoItem extends LitElement {
 		super();
 		this.title = '';
 		this.description = '';
-		this.removeItem = this.removeItem.bind(this);
 	}
 
 	removeItem() {
@@ -39,13 +38,15 @@ export default class TodoItem extends LitElement {
 
 	render() {
 		return html`
-			<span class="todo__title">${this.title}</span>
-			<span class="todo__description">${this.description}</span>
-			<input 
-				type="checkbox" 
-				id="done"
-				@change="${this.removeItem}"
-			/>Done
+			<li>
+				<span class="todo__title">${this.title}</span>
+				<span class="todo__description">${this.description}</span>
+				<input 
+					type="checkbox" 
+					id="done"
+					@change="${this.removeItem}"
+				/>Done
+			</li>
 		`;
 	}
 }
