@@ -48,14 +48,20 @@ export default class TodoForm extends LitElement {
 	}
 
 	saveNewTodo() {
+		if (!this.title) return;
+
 		this.dispatchEvent(new CustomEvent('save-todo', {
 			bubbles: true,
 			composed: true,
 			detail: {
 				title: this.title,
-				description: this.desc
+				description: this.desc,
+				isDone: false
 			}
 		}));
+
+		this.title = '';
+		this.desc = '';
 	}
 
 	render() {
@@ -64,15 +70,17 @@ export default class TodoForm extends LitElement {
 				<input 
 					type="text" 
 					id="title" 
-					.value="${this.title}"
-					@blur="${e => this.updateProperty('title', e.target.value)}"
+					placeholder="Title (required)"
+					.value=${this.title}
+					@blur=${e => this.updateProperty('title', e.target.value)}
 				/>
 				<textarea 
 					id="description" 
-					.value="${this.desc}"
-					@blur="${e => this.updateProperty('desc', e.target.value)}"
+					placeholder="Description"
+					.value=${this.desc}
+					@blur=${e => this.updateProperty('desc', e.target.value)}
 				></textarea>
-				<button type="button" id="save-btn" @click="${this.saveNewTodo}">Save</button>
+				<button type="button" id="save-btn" @click=${this.saveNewTodo}>Save</button>
 			</fieldset>
 		`;
 	}
